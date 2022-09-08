@@ -22,6 +22,12 @@ namespace MQTTBroker
                 return Task.CompletedTask;
             };
 
+            mqttServer.ClientConnectedAsync += e =>
+            {
+                Console.WriteLine($"ClientId = {e.ClientId}, Endpoint = {e.Endpoint}");
+                return Task.CompletedTask;
+            };
+
             mqttServer.StartAsync();
 
             Console.ReadLine();
